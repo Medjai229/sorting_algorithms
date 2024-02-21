@@ -45,21 +45,21 @@ int hoare_partition(int *array, int i, int j, int size)
 }
 
 /**
- * quick_sort - recursivly sorting the array
+ * quick_recursive - recursivly sorting the array
  * @array: pointer to the array
  * @first: first value
  * @last: last value
  * @size: size of the array
  */
-void quick_sort(int *array, ssize_t first, ssize_t last, int size)
+void quick_recursive(int *array, ssize_t first, ssize_t last, int size)
 {
 	ssize_t position = 0;
 
 	if (first < last)
 	{
 		position = hoare_partition(array, first, last, size);
-		quick_sort(array, first, position - 1, size);
-		quick_sort(array, position, last, size);
+		quick_recursive(array, first, position - 1, size);
+		quick_recursive(array, position, last, size);
 	}
 }
 
@@ -74,5 +74,5 @@ void quick_sort_hoare(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	quick_sort(array, 0, size - 1, size);
+	quick_recursive(array, 0, size - 1, size);
 }
